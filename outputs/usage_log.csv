@@ -1,0 +1,3 @@
+timestamp,username,role,action,status
+2026-04-29 22:03:32,alice,clinician,LOGIN,SUCCESS
+2026-04-29 22:03:32,alice,clinician,Retrieve Patient P1,PERFORMED

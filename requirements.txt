@@ -1,0 +1,13 @@
+# Clinical Data Warehouse — Python Requirements
+# All packages are from the Python standard library.
+# No third-party packages are required.
+#
+# Minimum Python version: 3.10
+#
+# Standard library modules used:
+#   tkinter   — GUI framework (built into Python on Windows)
+#   csv       — CSV file reading and writing
+#   os        — File path management
+#   random    — Random ID generation
+#   datetime  — Timestamps for logging
+#   collections — defaultdict for aggregations
