@@ -19,7 +19,7 @@ https://github.com/nirmalaap/clinical-data-warehouse
 ## 📁 Project Structure
 
 ```
-hospital\_app/
+Nirmala.Arimalaparamasivam.Project/
 ├── main.py                  # Entry point — run this file
 ├── requirements.txt         # Python dependencies
 ├── README.md
@@ -31,7 +31,7 @@ hospital\_app/
 │   ├── encounter.py         # EncounterManager — visit queries
 │   ├── note.py              # NoteManager — clinical notes
 │   ├── stats.py             # StatsManager — statistics/revenue/workload
-│   └── logger.py            # UsageLogger — login \& action logging
+│   └── logger.py            # UsageLogger — login \\\& action logging
 │
 ├── Data/
 │   ├── credentials.csv      # User login credentials
@@ -62,7 +62,7 @@ hospital\_app/
 ### Step 1 — Generate the data (first time only)
 
 ```bash
-python data\_generator.py
+python data\\\_generator.py
 ```
 
 Move the generated `.csv` files into the `Data/` folder.
@@ -110,7 +110,7 @@ The login window will appear. Use the credentials below.
 7. **Generate Key Statistics** — Summary stats for management
 8. **Monitor Revenue** — Total procedure revenue per department
 9. **Monitor Workload** — Provider encounter rankings
-10. **Usage Logging** — Every login and action is recorded to `outputs/usage\_log.csv`
+10. **Usage Logging** — Every login and action is recorded to `outputs/usage\\\_log.csv`
 
 \---
 
@@ -118,7 +118,7 @@ The login window will appear. Use the credentials below.
 
 * All business logic is separated into dedicated modules under `src/`.
 * `main.py` is the only file intended to be executed directly.
-* The `outputs/usage\_log.csv` file is created automatically on first run.
+* The `outputs/usage\\\_log.csv` file is created automatically on first run.
 * Data files are read with relative paths; do not hard-code absolute paths.
 
 
