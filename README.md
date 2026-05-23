@@ -26,12 +26,12 @@ Nirmala.Arimalaparamasivam.Project/
 │
 ├── src/
 │   ├── ui.py                # Tkinter UI application class
-│   ├── user.py              # User class \\\& credential validation
+│   ├── user.py              # User class \& credential validation
 │   ├── patient.py           # PatientManager — add/remove/retrieve
 │   ├── encounter.py         # EncounterManager — visit queries
 │   ├── note.py              # NoteManager — clinical notes
 │   ├── stats.py             # StatsManager — statistics/revenue/workload
-│   └── logger.py            # UsageLogger — login \\\\\\\& action logging
+│   └── logger.py            # UsageLogger — login \& action logging
 │
 ├── Data/
 │   ├── credentials.csv      # User login credentials
@@ -44,7 +44,7 @@ Nirmala.Arimalaparamasivam.Project/
 │
 └── outputs/
     ├── patients.csv         # Updated patient file (after add/remove)
-    └── usage\\\_log.csv        # Login and action history
+    └── usage\_log.csv        # Login and action history
 ```
 
 \---
@@ -62,7 +62,7 @@ Nirmala.Arimalaparamasivam.Project/
 ### Step 1 — Generate the data (first time only)
 
 ```bash
-python data\\\\\\\_generator.py
+python data\_generator.py
 ```
 
 Move the generated `.csv` files into the `Data/` folder.
@@ -110,7 +110,7 @@ The login window will appear. Use the credentials below.
 7. **Generate Key Statistics** — Summary stats for management
 8. **Monitor Revenue** — Total procedure revenue per department
 9. **Monitor Workload** — Provider encounter rankings
-10. **Usage Logging** — Every login and action is recorded to `outputs/usage\\\\\\\_log.csv`
+10. **Usage Logging** — Every login and action is recorded to `outputs/usage\_log.csv`
 
 \---
 
@@ -118,7 +118,7 @@ The login window will appear. Use the credentials below.
 
 * All business logic is separated into dedicated modules under `src/`.
 * `main.py` is the only file intended to be executed directly.
-* The `outputs/usage\\\\\\\_log.csv` file is created automatically on first run.
+* The `outputs/usage\_log.csv` file is created automatically on first run.
 * Data files are read with relative paths; do not hard-code absolute paths.
 
 
