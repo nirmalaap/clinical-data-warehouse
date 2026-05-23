@@ -4,12 +4,20 @@ patient.py - Patient data management for the Clinical Data Warehouse.
 
 import csv
 import os
+import random
+import string
 
 
 PATIENT_FIELDS = [
     "patient_id", "age", "gender", "bmi",
     "a1c", "bp_sys", "bp_dia", "smoking",
 ]
+
+
+def generate_visit_id():
+    """Generate a unique random visit ID e.g. V-A3X92K."""
+    chars = string.ascii_uppercase + string.digits
+    return "V-" + "".join(random.choices(chars, k=6))
 
 
 class PatientManager:
@@ -31,9 +39,6 @@ class PatientManager:
             reader = csv.DictReader(f)
             for row in reader:
                 pid = row["patient_id"]
-                # Keep overwriting so we naturally end up with the last row
-                # (encounter-based deduplication is done in encounter.py;
-                #  here we simply store one record per patient_id).
                 self.patients[pid] = dict(row)
 
     def _save(self):
@@ -49,9 +54,17 @@ class PatientManager:
         """Return the patient record for patient_id, or None if not found."""
         return self.patients.get(patient_id)
 
+    def patient_exists(self, patient_id: str) -> bool:
+        """Return True if the patient ID already exists."""
+        return patient_id in self.patients
+
     def add(self, record: dict) -> tuple[bool, str]:
         """
-        Add or update a patient record.
+        Add a new patient record.
+
+        If the Patient_ID does not exist, store the new patient.
+        If the Patient_ID already exists, generate a unique visit_ID
+        and return it so the caller can add a new encounter.
 
         Returns (success: bool, message: str).
         """
@@ -60,11 +73,11 @@ class PatientManager:
             return False, "Patient ID cannot be empty."
 
         if pid in self.patients:
-            # Patient exists — update the record
-            self.patients[pid].update(record)
-            self._save()
-            return True, f"Patient {pid} already existed — record updated."
+            # Patient already exists — generate a new unique visit ID
+            visit_id = generate_visit_id()
+            return True, f"EXISTING:{visit_id}"
 
+        # New patient — save to file
         self.patients[pid] = record
         self._save()
         return True, f"Patient {pid} added successfully."
